@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitmex</title>
+
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = showAns;
+
+        function getData(){
+                let parameters = "entry="+document.getElementById("entry").value+"&sell="+document.getElementById("sell").value+"&leverage="+document.getElementById("leverage")+"&amount="+document.getElementById("amount");
+                xhr.open("GET","leverage?"+parameters,true);
+                xhr.send(true);
+        }
+
+        function showAns(){
+				if(xhr.readyState==4){
+				document.getElementById("ans").innerHTML=xhr.responseText;
+				}
+		}
+    </script>
+</head>
+<body>
+    <input type="number" id="entry">
+    <input type="number" id="sell">
+    <input type="number" id="leverage">
+    <input type="number" id="amount">
+    <input type="button" value="Arvuta" onclick="getData()">
+    <div id="ans">Vastus</div>
+</body>
+</html>

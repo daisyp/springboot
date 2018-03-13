@@ -34,4 +34,9 @@ public class App {
         //System.getProperties().put("server.port", 40305);
         SpringApplication.run(App.class, args);
     }
+
+    @RequestMapping("/leverage")
+    double ans(double entry, double sell, double leverage, double amount) {
+        return ((amount/entry)*sell)-amount;
+    }
 }
